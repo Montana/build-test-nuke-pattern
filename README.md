@@ -16,7 +16,7 @@ When running tests in an ephemeral, IaC environment, a good pattern to follow is
 The structure of the Build, Test, Nuke pattern is to divide the testing event into three stages. In the first stage, Build, your testing script gets the source code from a source control management service, such as GitHub, and builds the required dependencies into a deployment unit, such as a Docker container. In the second stage, Test, the script tests the artifact. Then, in the third stage, Nuke, your script destroys the deployment artifacts used in the testing, removing them from both memory and disk. (See figure 1 below.)
 
 ![Nuke](nuke.png)
-Figure 1: The Build, Test, Nuke pattern
+> Figure 1: The Build, Test, Nuke pattern
 
 The benefit of the pattern is apparent. Your scripts are using only the resources needed, when they’re needed. For a small application, using the pattern might seem trivial. But, when you get into an application that has a dozen dependencies running in separate processes that put pressure on both memory and network IO, leaving them up and running after testing is done can be a significant risk. Destroying everything when testing is over addresses this risk head-on.
 
